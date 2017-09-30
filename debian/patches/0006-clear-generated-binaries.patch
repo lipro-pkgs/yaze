@@ -1,0 +1,23 @@
+From 959a3286fdfde2ef464df863bab0863e9d0c42a1 Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Mon, 1 Sep 2014 19:47:38 +0200
+Subject: [PATCH] clear generated binaries
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 3fdd7b3..3830934 100644
+--- a/Makefile
++++ b/Makefile
+@@ -95,7 +95,7 @@ tar:		$(DISTRIB)
+ 		gzip -9 yaze-$(VERSION).tar; \
+ 		rm -rf yaze-$(VERSION))
+ 
+-clean:;		rm -f *.o *~ core simz80.c
++clean:;		rm -f *.o *~ core simz80.c yaze cdm
+ 
+ yaze.o:		yaze.c simz80.h yaze.h
+ bios.o:		bios.c simz80.h yaze.h

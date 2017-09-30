@@ -1,0 +1,35 @@
+From 6b51f7a6d234795c555050b2038e2848ab7c7f4f Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Thu, 29 Oct 2015 23:07:03 +0100
+Subject: [PATCH] fix groff warning: macro `PU' not defined
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ cdm.1  | 1 -
+ yaze.1 | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/cdm.1 b/cdm.1
+index 9a04947..d1e7132 100644
+--- a/cdm.1
++++ b/cdm.1
+@@ -4,7 +4,6 @@
+ .SH NAME
+ cdm \- CP/M disk manager
+ .SH SYNOPSIS
+-.PU
+ .ll +8
+ .B cdm
+ .I file...
+diff --git a/yaze.1 b/yaze.1
+index 871c1fe..43b6030 100644
+--- a/yaze.1
++++ b/yaze.1
+@@ -4,7 +4,6 @@
+ .SH NAME
+ yaze \- yet another z80 emulator
+ .SH SYNOPSIS
+-.PU
+ .ll +8
+ .B yaze
+ .RB [ -v ]

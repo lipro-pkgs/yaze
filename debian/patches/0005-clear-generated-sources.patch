@@ -1,0 +1,23 @@
+From bbc74843a03b37a78cd364c589aa80abf02049b9 Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Sun, 15 Oct 2017 18:01:21 +0200
+Subject: [PATCH] clear generated sources
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 61e4892..3fdd7b3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -95,7 +95,7 @@ tar:		$(DISTRIB)
+ 		gzip -9 yaze-$(VERSION).tar; \
+ 		rm -rf yaze-$(VERSION))
+ 
+-clean:;		rm -f *.o *~ core
++clean:;		rm -f *.o *~ core simz80.c
+ 
+ yaze.o:		yaze.c simz80.h yaze.h
+ bios.o:		bios.c simz80.h yaze.h

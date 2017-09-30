@@ -1,0 +1,2 @@
+mount -r @SYSDRV@ @LIBDIR@/system
+go

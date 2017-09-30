@@ -1,0 +1,3 @@
+mount -r @SYSDRV@ @LIBDIR@/system
+mount -r @TSTDRV@ @LIBDIR@/test
+go

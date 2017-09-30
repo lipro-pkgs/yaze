@@ -1,0 +1,101 @@
+#!/usr/bin/env expect
+#
+# debian/yaze.exp
+# Part of the Debian package ‘yaze’.
+#
+# Copyright © 2017 Stephan Linz <linz@li-pro.net>
+#
+# This is free software; you may copy, modify, and/or distribute this
+# work under the terms of the Apache License, version 2.0 as published
+# by the Apache Software Foundation. No warranty expressed or implied.
+# See the file ‘/usr/share/common-licenses/Apache-2.0’ for details.
+
+# default execution time
+set timeout 60
+catch {set timeout $env(EXPECT_TIMEOUT)}
+
+# default prompt(s)
+set prompt "(A|B|C|D|\\$)>"
+catch {set prompt $env(EXPECT_PROMPT)}
+
+# abort on wrong arguments, show usage
+proc aarg {scrn} {
+	send_error "usage: $scrn <yaze_bin> <yaze_rc> <yaze_lst>|-\n"
+	exit 1
+}
+
+# abort on file not readable
+proc afnr {fnstr} {
+	send_error "$fnstr: file not readable\n"
+	exit 1
+}
+
+# abort on timeout
+proc ato {} {
+	send_error "connection timed out\n"
+	exit 2
+}
+
+# abort on end-of-file
+proc aeof {} {
+	send_error "connection lost\n"
+	exit 2
+}
+
+# check scipt arguments
+if {$argc != 3} { aarg [file tail $argv0] }
+
+# set yaze binary
+set yaze_bin [lindex $argv 0]
+if { ![file executable $yaze_bin] } {
+	set yaze_bin "yaze"
+	send_error "use default yaze binary\n"
+}
+
+# set yaze rc file
+set yaze_rc [lindex $argv 1]
+if { ![file readable $yaze_rc] } {
+	set yaze_rc "/etc/yazerc"
+	send_error "use default yaze rc file\n"
+}
+
+# set, check, and open yaze list file
+set yaze_lst [lindex $argv 2]
+if { [string match - $yaze_lst] } {
+	set fp {stdin}
+	set closefp 0
+} else {
+	if { ![file readable $yaze_lst] } { afnr $yaze_lst }
+	set fp [open $yaze_lst r]
+	set closefp 1
+}
+
+# slurp up the yaze command list file
+set yaze_cmd_lst [read -nonewline $fp]
+if { $closefp } { close $fp }
+
+# spawn yaze
+spawn $yaze_bin -s $yaze_rc
+set ypid $spawn_id
+
+# 10kB buffer to communicate with yaze
+match_max -i $ypid 10240
+
+# process yaze command list
+set yaze_cmds [split $yaze_cmd_lst "\n"]
+foreach yaze_cmd $yaze_cmds {
+	# do command line processing
+	expect -i $ypid -re $prompt { send -- "$yaze_cmd\n" } timeout { ato } eof { aeof }
+}
+
+expect -i $ypid eof { exit 0 }
+send_error "spawn already active\n"
+exit 2
+
+
+# Local variables:
+# coding: utf-8
+# mode: expect-script
+# indent-tabs-mode: nil
+# End:
+# vim: fileencoding=utf-8 filetype=expect expandtab :

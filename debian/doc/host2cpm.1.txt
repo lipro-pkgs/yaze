@@ -1,0 +1,113 @@
+========
+host2cpm
+========
+
+------------------------------------------------------
+copies host directories to/from a CP/M disk image file
+------------------------------------------------------
+
+:Author: |author|
+:Date: 2017-10-13
+:Copyright:
+    Copyright © 2001 Gary L. Howell
+    Copyright © 2017 Stephan Linz <linz@li-pro.net>
+:Version: 0.1
+:Manual section: 1
+:Manual group: Emulator
+
+..  |command| replace:: ``host2cpm``
+..  |license| replace::
+    `GNU General Public License, version 2
+    <http://www.gnu.org/licenses/gpl-2.0>`__
+
+
+SYNOPSIS
+========
+
+| |command| [ ``-cpm`` [ `FILE` ] ] [ ``-d`` [ `DIR[GLOB]` ] ] [ ``-f`` [ `GLOB` ] ] [ ``-r`` ]
+| |command| ``-h``
+
+
+DESCRIPTION
+===========
+
+|command| executes a Tcl program, copying complete directories or selected
+files by glob pattern to or from a CP/M disk image file. This will be done
+by calling the Yaze CP/M disk manager program, the ``cdm`` command.
+
+Glob patterns must be quoted so that the shell does not expand them before
+passing the argument to the script.
+
+``-cpm`` [ `FILE` ]
+    Define the name of the CP/M disk image file `FILE`. Default is the
+    name of the current directory with ``.dsk`` appended.
+
+    For default direction from host to CP/M disk image file, if the file
+    does not exist, a new empty CP/M disk image file will be created.
+
+``-d`` [ `DIR[GLOB]` ]
+    Define the directory pathname of the host directory `DIR` to be
+    copied or updated. Default is the name of the current directory.
+
+    For default direction from host to CP/M disk image file, if the path
+    is a directory name, all the files in the directory will be copied.
+    If the path includes a quoted glob pattern `DIRGLOB`, only the
+    selected files will be copied. Ex.: ``-d 'work/cpm/*.ASM'``.
+
+    For reverse direction (``-r``) from CP/M disk image file to host just
+    the directory path should be supplied, all files from the CP/M disk
+    will be copied to the host directory unless the a filter is supplied
+    (see the ``-f`` option).
+
+``-f`` [ `GLOB` ]
+    Define the CP/M file glob pattern `GLOB` selects files to be copied
+    from CP/M disk. Ex.: ``-f '*.ASM'``.
+
+``-h``
+    Describe how to use this CP/M disk image copy tool.
+
+``-r``
+    Reverse copy from CP/M disk image file to host, instead of default host
+    to CP/M disk image file.
+
+
+SEE ALSO
+========
+
+``yaze(1)``, ``cdm(1)``
+
+
+HISTORY
+=======
+
+The |command| command is a Tcl program which calls the ``cdm`` command,
+the Yaze CP/M disk manager program, to do all the work. This Tcl program
+was originally developed by Gary L. Howell.
+
+The Yaze CP/M disk manager program was originally developed by Frank
+D. Cringle and Carl Mascott. 
+
+This manual page was written to document the |command| command for
+Debian. This is free software: you may copy, modify and/or distribute
+this work under the terms of the |license| as published by the Free
+Software Foundation. No warranty expressed or implied.
+
+On Debian systems, the complete text of version 2 of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL-2`.
+
+..  |author| replace:: |authorname| |authoremail|
+..  |authorname| replace:: Stephan Linz
+..  |authoremail| replace:: <linz@li-pro.net>
+
+
+..
+    Local variables:
+    coding: utf-8
+    mode: text
+    mode: rst
+    time-stamp-format: "%:y-%02m-%02d"
+    time-stamp-start: "^:Date:[         ]+"
+    time-stamp-end: "$"
+    time-stamp-line-limit: 20
+    End:
+    vim: fileencoding=utf-8 filetype=rst :

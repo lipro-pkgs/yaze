@@ -1,0 +1,63 @@
+To Do list for Debian packaging
+###############################
+
+:Author: Stephan Linz <linz@li-pro.net>
+:Last-Updated: 2017-10-13
+
+To Do
+=====
+
+* Provide a patch to improve the upstream code related to compile time
+  warnings `warning: ignoring return value`. Since `glibc 2.3.4`_ the
+  following system functions produce warnings:
+
+  * yaze.c:135:7: `fread(ram+loadadr, 1, 64*1024-loadadr, cpm);`
+  * yaze.c:153:10: `fread(ram + ccp_base, CPM_LENGTH, 1, cpm);`
+  * bios.c:309:2: `(void) write(fileno(s->fp), &c, 1);`
+  * monitor.c:947:8: `system(cmd+1);`
+  * monitor.c:949:8: `system(shell);`
+  * cdm.c:1551:8: `system(cmd+1);`
+  * cdm.c:1553:8: `system(shell);`
+
+  Currently, only one patch exists to block these warnings from glibc
+  completely with a simple preset of `-D_FORTIFY_SOURCE=0` in `CFLAGS`.
+
+* Remove Debian maintenance option `hardening=-fortify` in `debian/rules`.
+  It was introduced to avoid the compile time warnings described above.
+  Details see: `Debian Hardening Options`_
+
+* Remove lintian overrides in `debian/yaze.lintian-overrides`. It was
+  introduced to avoid the lintian warnings as an result of the Debian
+  maintenance option `hardening=-fortify` in `debian/rules`.
+
+* Replace the target `override_dh_clean` in `debian/rules` with the new
+  functionality in `debhelper (>= 9.20151116)`_ to support removal of
+  directory (plus contents) as soon as this new version of debhelper is
+  available with any Debian and Ubuntu stable and LTS releases.
+
+* Instead of deploy and use the pre-assembled CP/M test programs
+  `test/prelim.com`, `test/zexdoc.com`, and `test/zexall.com` select or
+  provide an Debian package with an proper Z80 native assembler, debends on
+  it and create the CP/M test programs from the corresponding Z80 assembler
+  source files.
+
+.. _`glibc 2.3.4`: http://man7.org/linux/man-pages/man7/feature_test_macros.7.html
+.. _`Debian Hardening Options`: https://wiki.debian.org/Hardening
+.. _`debhelper (>= 9.20151116)`: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=511048#69
+
+
+Done
+====
+
+
+..
+    Local variables:
+    coding: utf-8
+    mode: text
+    mode: rst
+    time-stamp-format: "%:y-%02m-%02d"
+    time-stamp-start: "^:Last-Updated:[ 	]+"
+    time-stamp-end: "$"
+    time-stamp-line-limit: 20
+    End:
+    vim: fileencoding=utf-8 filetype=rst :

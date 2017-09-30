@@ -1,0 +1,44 @@
+===============
+yaze for Debian
+===============
+
+:Author: Stephan Linz <linz@li-pro.net>
+:Last-Updated: 2017-10-13
+
+Packages
+========
+
+The Debian “yaze” package provides two additional `expect` scripts
+for better batch integration:
+
+* The Z80 emulator script `/usr/share/yaze/yaze.exp`
+* The CP/M disk manager script `/usr/share/yaze/cdm.exp`
+
+The Debian “yaze-test” package provides the simple integration test
+environment which contains the CP/M test programs as provided from
+the original source together with test fixtures and a bash scipt for
+easy re-running:
+
+* The Z80 emulator test runner script `/usr/share/yaze/yaze-test.sh`
+* The Z80 emulator test fixtures `/usr/share/yaze/fixtures/*`
+
+Command-line programs
+=====================
+
+The Debian “yaze” source package provides the command-line programs
+by the following names:
+
+* The Z80 emulator program `/usr/bin/yaze`.
+* The CP/M disk manager program `/usr/bin/cdm`.
+* The host directories to/from disk image tool `/usr/bin/host2cpm`.
+
+Man pages are in section 1 under the corresponding names.
+
+
+..
+    Local variables:
+    coding: utf-8
+    mode: text
+    mode: rst
+    End:
+    vim: fileencoding=utf-8 filetype=rst :

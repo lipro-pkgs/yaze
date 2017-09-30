@@ -1,0 +1,122 @@
+From eed9a7e0abc8f467349b5c251a8955c389f34961 Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Mon, 1 Sep 2014 19:21:02 +0200
+Subject: [PATCH] add parentheses omitted in certain contexts
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ bios.c    |  5 +++--
+ cdm.c     | 12 +++++++-----
+ monitor.c | 22 +++++++++++++---------
+ 3 files changed, 23 insertions(+), 16 deletions(-)
+
+diff --git a/bios.c b/bios.c
+index 3edeec3..2864d62 100644
+--- a/bios.c
++++ b/bios.c
+@@ -278,10 +278,11 @@ serin(int chan)
+     if (s->fp == NULL)
+ 	return 0x1a;
+     if (s->tty) {
+-	if (read(fileno(s->fp), &c, 1) == 0)
++	if (read(fileno(s->fp), &c, 1) == 0) {
+ 	    return 0x1a;
+-	else
++	} else {
+ 	    return c;
++	}
+     }
+     if ((ch = getc(s->fp)) == EOF)
+ 	return 0x1a;
+diff --git a/cdm.c b/cdm.c
+index a985da7..c661602 100644
+--- a/cdm.c
++++ b/cdm.c
+@@ -1670,9 +1670,9 @@ docmd(char *cmd)
+ 	if (!diskuser(cmd, &d, &u))
+ 	    goto bad;
+ 	if (d >= 0) {
+-	    if (mnttab[d].flags & MNT_ACTIVE)
++	    if (mnttab[d].flags & MNT_ACTIVE) {
+ 		curdisk = d;
+-	    else {
++	    } else {
+ 		fprintf(stderr, "disk %c not mounted\n", 'A'+d);
+ 		return 0;
+ 	    }
+@@ -1689,13 +1689,15 @@ docmd(char *cmd)
+     tok = strtok(cmd, white);
+     if (tok == NULL || *tok == 0)
+ 	return 0;
+-    for (tlen = strlen(tok), cp = commands; cp->name; cp++)
++    for (tlen = strlen(tok), cp = commands; cp->name; cp++) {
+ 	if (strncmp(tok, cp->name, tlen) == 0) {
+-	    if (func)
++	    if (func) {
+ 		goto bad;		/* ambiguous */
+-	    else
++	    } else {
+ 		func = cp->func;
++	    }
+ 	}
++    }
+     if (func)
+ 	return func(tok);
+  bad:
+diff --git a/monitor.c b/monitor.c
+index 0d72369..f4c7263 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -1066,17 +1066,19 @@ docmd(char *cmd)
+     tok = strtok(cmd, white);
+     if (tok == NULL || *tok == 0)
+ 	return 0;
+-    for (tlen = strlen(tok), cp = commands; cp->name; cp++)
+-	if (strncmp(tok, cp->name, tlen) == 0)
++    for (tlen = strlen(tok), cp = commands; cp->name; cp++) {
++	if (strncmp(tok, cp->name, tlen) == 0) {
+ 	    /* don't allow quit command to be abbreviated */
+ 	    if (cp->func != doquit || strcmp(tok, cp->name) == 0) {
+-		if (func == NULL)
++		if (func == NULL) {
+ 		    func = cp->func;
+-		else {
++		} else {
+ 		    func = NULL;	/* ambiguous */
+ 		    break;
+ 		}
+ 	    }
++	}
++    }
+     if (func)
+ 	return func(cmd);
+     printf("%s ?\n", tok);
+@@ -1110,11 +1112,13 @@ monitor(FASTWORK adr)
+ 	    cmd = NULL;
+ 	}
+ 	cmd = readline("$>");
+-	if (cmd == NULL)
+-	    if ((ttyflags & ISATTY) == 0)
++	if (cmd == NULL) {
++	    if ((ttyflags & ISATTY) == 0) {
+ 		doquit(NULL);
+-	    else
++	    } else {
+ 		putchar('\n');
++	    }
++	}
+     } while (!docmd(cmd));
+ #else
+     if (cmd == NULL)
+@@ -1123,9 +1127,9 @@ monitor(FASTWORK adr)
+ 	fputs("$>", stdout);
+ 	fflush(stdout);
+ 	if (fgets(cmd, BUFSIZ-1, stdin) == NULL) {
+-	    if ((ttyflags & ISATTY) == 0)
++	    if ((ttyflags & ISATTY) == 0) {
+ 		doquit(NULL);
+-	    else {
++	    } else {
+ 		putchar('\n');
+ 		cmd[0] = 0;
+ 	    }

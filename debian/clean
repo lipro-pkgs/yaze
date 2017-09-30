@@ -1,0 +1,12 @@
+cdm
+yaze
+addons/cdm.exp
+addons/yaze.exp
+addons/yaze-default.rc
+addons/yaze-test.rc
+addons/yaze-test.sh
+addons/fixtures/prelim
+addons/fixtures/zexlex
+doc/host2cpm.1
+test/zexall.z80
+test/zexdoc.z80

@@ -1,0 +1,8 @@
+#!/usr/bin/dh-exec
+host2cpm.tcl usr/share/yaze
+addons/cdm.exp usr/share/yaze
+addons/yaze.exp usr/share/yaze
+addons/yaze-default.rc => etc/yazerc
+test/sys.azm usr/share/yaze/source
+test/sys.com usr/share/yaze/system
+test/timex.com usr/share/yaze/system

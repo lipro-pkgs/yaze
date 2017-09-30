@@ -1,0 +1,36 @@
+From d57dfbc4cd716b6e4ee8ba457b4229022718e892 Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Thu, 29 Oct 2015 22:59:29 +0100
+Subject: [PATCH] do not strip debug symbols from binaries
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index acca910..61e4892 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,8 +13,8 @@ MANDIR	      = /usr/local/man/man1
+ LIBDIR	      = /usr/local/lib
+ 
+ # full speed or debugging to taste
+-OPTIMIZE      = -O2
+-#OPTIMIZE       = -g
++#OPTIMIZE      = -O2
++OPTIMIZE       = -g -O2
+ 
+ # -DUSE_GNU_READLINE for command recall/editing and filename completion
+ # -DBGii_BUG works around a problem in Backgrounder II
+@@ -69,8 +69,8 @@ cdm:		cdm.o
+ 		$(CC) $(CFLAGS) cdm.o $(LIBS) -o $@
+ 
+ install:	all
+-		$(INSTALL) -s -c -m 755 yaze $(BINDIR)
+-		$(INSTALL) -s -c -m 755 cdm $(BINDIR)
++		$(INSTALL) -c -m 755 yaze $(BINDIR)
++		$(INSTALL) -c -m 755 cdm $(BINDIR)
+ 		$(INSTALL) -c -m 644 yaze.boot $(LIBDIR)
+ 		$(INSTALL) -c -m 644 yaze.1 $(MANDIR)
+ 		$(INSTALL) -c -m 644 cdm.1 $(MANDIR)

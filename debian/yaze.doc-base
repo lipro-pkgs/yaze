@@ -1,0 +1,10 @@
+Document: yaze
+Title: Yet Another Z80 Emulator
+Author: Frank D. Cringle <fdc@cliwe.ping.de>
+Abstract: Yaze is a Z80 and CP/M emulator
+ designed to run on Unix systems. This manual describes these emulator,
+ and also the emulator utilities itself.
+Section: Emulators
+
+Format: text
+Files: /usr/share/doc/yaze/yaze.doc.gz

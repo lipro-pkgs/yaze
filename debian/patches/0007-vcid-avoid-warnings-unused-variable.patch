@@ -1,0 +1,79 @@
+From d02fe8a44d89a9fb89209e250f08003a464e081e Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Mon, 1 Sep 2014 18:37:11 +0200
+Subject: [PATCH] vcid: avoid warnings unused variable
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ bios.c    | 2 +-
+ cdm.c     | 2 +-
+ io.c      | 2 +-
+ monitor.c | 2 +-
+ yaze.c    | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/bios.c b/bios.c
+index e28d966..3edeec3 100644
+--- a/bios.c
++++ b/bios.c
+@@ -38,7 +38,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
+ /* 	$Id: bios.c,v 1.4 2004/04/23 09:50:15 fdc Exp $	 */
+ 
+ #ifndef lint
+-static char vcid[] = "$Id: bios.c,v 1.4 2004/04/23 09:50:15 fdc Exp $";
++static char vcid[] __attribute__((unused)) = "$Id: bios.c,v 1.4 2004/04/23 09:50:15 fdc Exp $";
+ #endif /* lint */
+ 
+ 
+diff --git a/cdm.c b/cdm.c
+index 9d13490..bbe59b7 100644
+--- a/cdm.c
++++ b/cdm.c
+@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
+ /* 	$Id: cdm.c,v 1.3 2004/01/11 16:49:58 fdc Exp $	 */
+ 
+ #ifndef lint
+-static char vcid[] = "$Id: cdm.c,v 1.3 2004/01/11 16:49:58 fdc Exp $";
++static char vcid[] __attribute__((unused)) = "$Id: cdm.c,v 1.3 2004/01/11 16:49:58 fdc Exp $";
+ #endif /* lint */
+ 
+ 
+diff --git a/io.c b/io.c
+index a89f6cd..6a220b1 100644
+--- a/io.c
++++ b/io.c
+@@ -36,7 +36,7 @@ simulator, if it still reads characters.
+ /* 	$Id: io.c,v 1.2 2004/01/11 16:11:17 fdc Exp $	 */
+ 
+ #ifndef lint
+-static char vcid[] = "$Id: io.c,v 1.2 2004/01/11 16:11:17 fdc Exp $";
++static char vcid[] __attribute__((unused)) = "$Id: io.c,v 1.2 2004/01/11 16:11:17 fdc Exp $";
+ #endif /* lint */
+ 
+ /*}}}*/
+diff --git a/monitor.c b/monitor.c
+index 5c7c0ed..f7b750f 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
+ /* 	$Id: monitor.c,v 1.3 2004/01/11 16:49:58 fdc Exp $	 */
+ 
+ #ifndef lint
+-static char vcid[] = "$Id: monitor.c,v 1.3 2004/01/11 16:49:58 fdc Exp $";
++static char vcid[] __attribute__((unused)) = "$Id: monitor.c,v 1.3 2004/01/11 16:49:58 fdc Exp $";
+ #endif /* lint */
+ 
+ #include <stdio.h>
+diff --git a/yaze.c b/yaze.c
+index edf9a9d..6dc9f04 100644
+--- a/yaze.c
++++ b/yaze.c
+@@ -25,7 +25,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
+ /* 	$Id: yaze.c,v 1.5 2004/04/23 10:05:25 fdc Exp $	 */
+ 
+ #ifndef lint
+-static char vcid[] = "$Id: yaze.c,v 1.5 2004/04/23 10:05:25 fdc Exp $";
++static char vcid[] __attribute__((unused)) = "$Id: yaze.c,v 1.5 2004/04/23 10:05:25 fdc Exp $";
+ #endif /* lint */
+ 
+ 

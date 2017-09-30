@@ -1,0 +1,295 @@
+#!/usr/bin/make -f
+#
+# debian/rules
+# Part of the Debian ‘yaze’ package.
+#
+# Copyright © 2017 Stephan Linz <linz@li-pro.net>
+# Copyright © 2010–2016 Ben Finney <bignose@debian.org>
+#
+# This is free software; you may copy, modify, and/or distribute this
+# work under the terms of the Apache License, version 2.0 as published
+# by the Apache Software Foundation. No warranty expressed or implied.
+# See the file ‘/usr/share/common-licenses/Apache-2.0’ for details.
+
+# based on: https://notabug.org/bignose/debian_python-coverage
+
+# Uncomment this to turn on verbose mode.
+# export DH_VERBOSE=1
+
+# avoid conflicts with system wide _FORTIFY_SOURCE
+export DEB_BUILD_MAINT_OPTIONS = hardening=-fortify
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+DISTRIBUTION_NAME = yaze
+
+package_working_root = debian
+package_addons_root = debian/${ADDONDIR}
+package_fixtures_root = debian/${FIXDIR}
+package_document_root = debian/${DOCDIR}
+package_install_root = debian/${DISTRIBUTION_NAME}
+package_runtime_prefix = /usr
+package_runtime_sysconf = /etc
+
+TESTDIR = test
+Z80ASM_SUFFIX = .z80
+zexdoc_testsrc = zexdoc${Z80ASM_SUFFIX}
+zexdoc_testsrc_path = $(addprefix ${TESTDIR}/,${zexdoc_testsrc})
+zexall_testsrc = zexall${Z80ASM_SUFFIX}
+zexall_testsrc_path = $(addprefix ${TESTDIR}/,${zexall_testsrc})
+
+ADDONDIR = addons
+RCFILE_SUFFIX = .rc
+default_rcfile = ${DISTRIBUTION_NAME}-default${RCFILE_SUFFIX}
+default_rcfile_path = $(addprefix ${ADDONDIR}/,${default_rcfile})
+test_rcfile = ${DISTRIBUTION_NAME}-test${RCFILE_SUFFIX}
+test_rcfile_path = $(addprefix ${ADDONDIR}/,${test_rcfile})
+SHFILE_SUFFIX = .sh
+test_shfile = ${DISTRIBUTION_NAME}-test${SHFILE_SUFFIX}
+test_shfile_path = $(addprefix ${ADDONDIR}/,${test_shfile})
+EXPFILE_SUFFIX = .exp
+cdm_expfile = cdm${EXPFILE_SUFFIX}
+cdm_expfile_path = $(addprefix ${ADDONDIR}/,${cdm_expfile})
+yaze_expfile = ${DISTRIBUTION_NAME}${EXPFILE_SUFFIX}
+yaze_expfile_path = $(addprefix ${ADDONDIR}/,${yaze_expfile})
+GENERATED_DIRS += ${ADDONDIR}
+
+FIXDIR = ${ADDONDIR}/fixtures
+prelim_fixfile = prelim
+prelim_fixfile_path = $(addprefix ${FIXDIR}/,${prelim_fixfile})
+zexlex_fixfile = zexlex
+zexlex_fixfile_path = $(addprefix ${FIXDIR}/,${zexlex_fixfile})
+GENERATED_DIRS += ${FIXDIR}
+
+DOCDIR = doc
+MANPAGE_SUFFIX = .1
+manpage_tempfile_suffix = ${MANPAGE_SUFFIX}.tmp
+host2cpm_manpage = host2cpm${MANPAGE_SUFFIX}
+host2cpm_manpage_path = $(addprefix ${DOCDIR}/,${host2cpm_manpage})
+GENERATED_DIRS += ${DOCDIR}
+
+SED = sed
+INSTALL = install
+
+# Send HTTP traffic to the “discard” service during packaging actions.
+export http_proxy = http://127.0.1.1:9/
+export https_proxy = ${http_proxy}
+
+RST_SUFFIX = .txt
+RST2MAN = rst2man
+
+INP_SUFFIX = .in
+RCIN2RC = $(SED) -e 's%@LIBDIR@%${LIBDIR}%g' \
+		 -e 's%@SYSDRV@%${SYSDRV}%g' \
+		 -e 's%@TSTDRV@%${TSTDRV}%g'
+
+SHIN2SH = $(SED) -e 's%@BINDIR@%${BINDIR}%g' \
+		 -e 's%@LIBDIR@%${LIBDIR}%g' \
+		 -e 's%@TSTDRV@%${TSTDRV}%g'
+
+
+%:
+	dh $@ 
+
+
+override_dh_auto_configure: ${TESTDIR}/zexlax.pl
+	$(Q)chmod 775 -v $<
+
+
+override_dh_auto_build:
+	$(Q)dh_auto_build -pyaze -- \
+	  BINDIR=${BINDIR} LIBDIR=${LIBDIR} MANDIR=${MANDIR} \
+	  SYSCONFDIR=${SYSCONFDIR}
+
+override_dh_auto_build: PREFIX=${package_runtime_prefix}
+override_dh_auto_build: SYSCONFDIR=${package_runtime_sysconf}
+override_dh_auto_build: BINDIR=${PREFIX}/bin
+override_dh_auto_build: LIBDIR=${PREFIX}/share/yaze
+override_dh_auto_build: MANDIR=${PREFIX}/share/man/man1
+override_dh_auto_build: testsrc-aliases
+
+
+override_dh_auto_test: ${test_shfile_path}
+	$(Q)BINDIR=$(BINDIR) LIBDIR=$(LIBDIR) \
+	    RCFILE=$(RCFILE) TSTDRV=$(TSTDRV) $< $(VO)
+
+override_dh_auto_test: BINDIR=$(CURDIR)
+override_dh_auto_test: LIBDIR=$(CURDIR)/${ADDONDIR}
+override_dh_auto_test: RCFILE=$(CURDIR)/.yazerc
+override_dh_auto_test: TSTDRV=a
+override_dh_auto_test: shfile-aliases
+override_dh_auto_test: expfile-aliases
+override_dh_auto_test: fixfile-aliases
+
+
+override_dh_auto_install:
+	$(Q)dh_auto_install -pyaze --destdir=${DESTDIR} -- \
+	    BINDIR=${BINDIR} LIBDIR=${LIBDIR} \
+	    MANDIR=${MANDIR} SYSCONFDIR=${SYSCONFDIR}
+
+override_dh_auto_install: DESTDIR=${package_install_root}
+override_dh_auto_install: PREFIX=${package_runtime_prefix}
+override_dh_auto_install: SYSCONFDIR=${DESTDIR}${package_runtime_sysconf}
+override_dh_auto_install: BINDIR=${DESTDIR}${PREFIX}/bin
+override_dh_auto_install: LIBDIR=${DESTDIR}${PREFIX}/share/yaze
+override_dh_auto_install: MANDIR=${DESTDIR}${PREFIX}/share/man/man1
+override_dh_auto_install: testsrc-aliases
+override_dh_auto_install: rcfile-aliases
+override_dh_auto_install: shfile-aliases
+override_dh_auto_install: expfile-aliases
+override_dh_auto_install: fixfile-aliases
+
+
+override_dh_installman:
+	$(Q)dh_installman
+
+override_dh_installman: manpage-aliases
+
+
+override_dh_clean:
+	$(Q)dh_clean
+	$(Q)$(RM) -r -- ${GENERATED_DIRS}
+
+
+${GENERATED_DIRS}:
+	$(INSTALL) -m 755 -d "$@"
+
+
+.PHONY: testsrc-aliases
+testsrc-aliases: ${zexdoc_testsrc_path}
+testsrc-aliases: ${zexall_testsrc_path}
+
+${TESTDIR}/${zexdoc_testsrc}: ${TESTDIR}
+${TESTDIR}/${zexall_testsrc}: ${TESTDIR}
+
+${TESTDIR}/zex%${Z80ASM_SUFFIX}: ${TESTDIR}/zexlax.pl
+	$(Q)$(dh_echo) '"$<" -> "$@"'
+	$(Q)$< $(*:all=) > "$@"
+
+
+.PHONY: rcfile-aliases
+rcfile-aliases: ${default_rcfile_path}
+rcfile-aliases: ${test_rcfile_path}
+
+${ADDONDIR}/${default_rcfile}: ${ADDONDIR}
+${ADDONDIR}/${test_rcfile}: ${ADDONDIR}
+
+${ADDONDIR}/%${RCFILE_SUFFIX}: ${package_addons_root}/%${RCFILE_SUFFIX}
+	$(INSTALL) -m 644 "$<" "$@"
+
+%${RCFILE_SUFFIX}: %${RCFILE_SUFFIX}${INP_SUFFIX}
+	$(Q)$(dh_echo) '"$<" -> "$@"'
+	$(Q)$(RCIN2RC) "$<" > "$@"
+
+%${RCFILE_SUFFIX}: LIBDIR=${PREFIX}/share/yaze
+%${RCFILE_SUFFIX}: SYSDRV=a
+%${RCFILE_SUFFIX}: TSTDRV=b
+
+
+.PHONY: shfile-aliases
+shfile-aliases: ${test_shfile_path}
+
+${ADDONDIR}/${test_shfile}: ${ADDONDIR}
+
+${ADDONDIR}/%${SHFILE_SUFFIX}: ${package_addons_root}/%${SHFILE_SUFFIX}
+	$(INSTALL) -m 755 "$<" "$@"
+
+%${SHFILE_SUFFIX}: %${SHFILE_SUFFIX}${INP_SUFFIX}
+	$(Q)$(dh_echo) '"$<" -> "$@"'
+	$(Q)$(SHIN2SH) "$<" > "$@"
+
+%${SHFILE_SUFFIX}: BINDIR=${PREFIX}/bin
+%${SHFILE_SUFFIX}: LIBDIR=${PREFIX}/share/yaze
+%${SHFILE_SUFFIX}: TSTDRV=b
+
+
+.PHONY: expfile-aliases
+expfile-aliases: ${cdm_expfile_path}
+expfile-aliases: ${yaze_expfile_path}
+
+${ADDONDIR}/${cdm_expfile}: ${ADDONDIR}
+${ADDONDIR}/${yaze_expfile}: ${ADDONDIR}
+
+${ADDONDIR}/%${EXPFILE_SUFFIX}: ${package_addons_root}/%${EXPFILE_SUFFIX}
+	$(INSTALL) -m 755 "$<" "$@"
+
+
+.PHONY: fixfile-aliases
+fixfile-aliases: ${prelim_fixfile_path}
+fixfile-aliases: ${zexlex_fixfile_path}
+
+${FIXDIR}/${prelim_fixfile}: ${FIXDIR}
+${FIXDIR}/${zexlex_fixfile}: ${FIXDIR}
+
+${FIXDIR}/%: ${package_fixtures_root}/%
+	$(INSTALL) -m 644 "$<" "$@"
+
+
+.PHONY: manpage-aliases
+manpage-aliases: ${host2cpm_manpage_path}
+
+${DOCDIR}/${host2cpm_manpage}: ${DOCDIR}
+
+${DOCDIR}/%${MANPAGE_SUFFIX}: ${package_document_root}/%${MANPAGE_SUFFIX}
+	$(INSTALL) -m 644 "$<" "$@"
+
+%${MANPAGE_SUFFIX}: %${manpage_tempfile_suffix}
+	$(Q)$(dh_echo) '"$<" -> "$@"'
+	$(Q)cat \
+	    ${package_document_root}/manpage_encoding_declaration.UTF-8 \
+	    "$<" > "$@"
+
+%${manpage_tempfile_suffix}: %${MANPAGE_SUFFIX}${RST_SUFFIX}
+	$(Q)$(dh_echo) '"$<" -> "$@"'
+	$(Q)$(RST2MAN) "$<" > "$@"
+
+
+.PHONY: get-packaged-orig-source
+get-packaged-orig-source:
+	$(Q)$(uscan-download-source) --download-current-version
+
+# Policy §4.9 strongly recommends the ‘get-orig-source’ target:
+# “This target is optional, but providing it if possible is a good idea.”
+#
+# This target is an anomaly: per Policy §4.9, it fetches the *latest*
+# upstream source, regardless of this package's version. To fetch the
+# upstream source corresponding to this package's *declared* version
+# in ‘debian/changelog’, use ‘get-packaged-orig-source’ instead.
+.PHONY: get-orig-source
+get-orig-source:
+	$(Q)$(uscan-download-source)
+
+get-orig-source get-packaged-orig-source: http_proxy =
+get-orig-source get-packaged-orig-source: makefile_dir = $(abspath $(dir $(firstword ${MAKEFILE_LIST})))
+get-orig-source get-packaged-orig-source: package_dir = $(abspath $(dir ${makefile_dir}))
+
+define uscan-download-source
+	uscan --noconf --verbose \
+	    --force-download \
+	    --rename \
+	    --destdir=$(CURDIR) \
+	    --check-dirname-level=0 ${package_dir}
+endef # uscan-download-source
+
+
+ifeq ($(DH_VERBOSE),1)
+  quiet =
+  Q =
+  VO = -v
+else
+  quiet=quiet_
+  Q = @
+  VO =
+endif
+
+       dh_echo := :
+ quiet_dh_echo := echo
+silent_dh_echo := :
+dh_echo := $($(quiet)dh_echo)
+
+
+# Local variables:
+# mode: makefile
+# coding: utf-8
+# End:
+# vim: filetype=make fileencoding=utf-8 :

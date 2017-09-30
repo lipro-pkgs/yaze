@@ -1,0 +1,11 @@
+addons/yaze-test.rc usr/share/yaze
+addons/yaze-test.sh usr/share/yaze
+addons/fixtures/prelim usr/share/yaze/fixtures
+addons/fixtures/zexlex usr/share/yaze/fixtures
+test/prelim.z80 usr/share/yaze/source
+test/prelim.com usr/share/yaze/test
+test/zexall.z80 usr/share/yaze/source
+test/zexall.com usr/share/yaze/test
+test/zexdoc.z80 usr/share/yaze/source
+test/zexdoc.com usr/share/yaze/test
+test/zexlax.pl usr/share/yaze

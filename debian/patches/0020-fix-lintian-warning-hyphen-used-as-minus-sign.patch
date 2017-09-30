@@ -1,0 +1,64 @@
+From e8b9414bed2e72ec1f755d3ac421171f7304c9cc Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Tue, 17 Oct 2017 18:29:46 +0200
+Subject: [PATCH] fix lintian warning: hyphen used as minus sign
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ yaze.1 | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/yaze.1 b/yaze.1
+index 43b6030..668a93b 100644
+--- a/yaze.1
++++ b/yaze.1
+@@ -27,11 +27,11 @@ emulator, a complete CP/M system is available, running on a Unix host.
+ The complete documentation is contained in the file yaze.doc.
+ .SH OPTIONS
+ .TP
+-.B -v
++.B \-v
+ causes a summary of the system configuration to be displayed after
+ loading.
+ .TP
+-.B -b
++.B \-b
+ gives the name of a file to be loaded into the emulated processor's
+ ram before the emulation is started.  The file is loaded at the
+ address given by the \fB-l\fR option, if one is present, or else at
+@@ -39,21 +39,21 @@ the basepage (see \fB-p\fR).  If a bootfile is not specified with the
+ \fB-b\fR option, yaze looks for the file yaze.boot in the current
+ directory first, then in /usr/local/lib.
+ .TP
+-.B -l
++.B \-l
+ the hexadecimal address at which to load and start the bootstrap file,
+ if a separate bootstrap is necessary.
+ .TP
+-.B -p
++.B \-p
+ the top 2 hex digits of the location of the CP/M console command
+ processor.  Also the location to which bootfile is loaded if a
+ \fB-l\fR option is not present.
+ .TP
+-.B -s
++.B \-s
+ a file containing monitor commands that are to be executed before
+-starting the emulator.  If no \fB-s\fR option is present, .yazerc from
++starting the emulator.  If no \fB\-s\fR option is present, .yazerc from
+ the current directory or from the user's home directory is taken.
+ .TP
+-.B -z
++.B \-z
+ the hexadecimal address in the emulated processor's ram of a 1KByte
+ area that should be reserved for use by an extended CP/M clone such as
+ ZCPR3.
+@@ -63,7 +63,7 @@ startup file, then from the tail of the command line (any strings
+ which follow the options) and then from the tty if neither the startup
+ file nor the command line included a "go" command.  Control can be
+ returned to the monitor by executing the CP/M sys.com command or, if
+-yaze was compiled with -DDEBUG, by sending it a SIGINT signal.
++yaze was compiled with \-DDEBUG, by sending it a SIGINT signal.
+ 
+ Command names can be shortened to a unique abbreviation.  If
+ \fByaze\fR was compiled with GNU Readline, command-line editing,

@@ -1,0 +1,25 @@
+From 9993271299332bf03627a20111085b7cc8c0a776 Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Mon, 1 Sep 2014 19:24:42 +0200
+Subject: [PATCH] avoid implicit declaration of file functions
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3830934..e466727 100644
+--- a/Makefile
++++ b/Makefile
+@@ -23,8 +23,8 @@ OPTIMIZE       = -g -O2
+ # -DMMU compiles in support for bank-switched memory
+ # -DMEMSIZE <val> sets size of memory in KBytes (default 64)
+ # solaris2 needs -D__EXTENSIONS__
+-# linux needs -D_BSD_SOURCE
+-OPTIONS	      = -DBIOS -D_BSD_SOURCE
++# linux needs -D_GNU_SOURCE
++OPTIONS	      = -DBIOS -D_GNU_SOURCE
+ 
+ # Link with CP/M BIOS support,
+ YAZE_OBJS     = yaze.o simz80.o bios.o monitor.o

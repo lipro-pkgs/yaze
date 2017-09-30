@@ -1,0 +1,46 @@
+From 10db4f44ae58952070e5f913875b66fec2abfc88 Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Mon, 1 Sep 2014 18:41:15 +0200
+Subject: [PATCH] avoid warning nested extern declaration of 'perl_params'
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ monitor.c | 3 +--
+ simz80.h  | 3 +++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/monitor.c b/monitor.c
+index f7b750f..597023b 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -916,7 +916,6 @@ dotime(char *cmd)
+     static struct tms lastbuf;
+     struct tms tbuf;
+     long tickspersec = CLK_TCK;
+-    extern char *perl_params;
+ 
+     now = times(&tbuf);
+ 
+@@ -924,7 +923,7 @@ dotime(char *cmd)
+ 	   ((double)(now-lastreal))/tickspersec,
+ 	   ((double)(tbuf.tms_utime-lastbuf.tms_utime))/tickspersec,
+ 	   ((double)(tbuf.tms_stime-lastbuf.tms_stime))/tickspersec,
+-	   perl_params);
++	   perl_params /* from simz80 */);
+     lastreal = now;
+     lastbuf = tbuf;
+     return 0;
+diff --git a/simz80.h b/simz80.h
+index 18985dc..9ddf51d 100644
+--- a/simz80.h
++++ b/simz80.h
+@@ -49,6 +49,9 @@ typedef unsigned int	FASTWORK;
+ typedef unsigned long	FASTWORK;
+ #endif
+ 
++/* accessible by the monitor */
++extern char *perl_params;
++
+ /* two sets of accumulator / flags */
+ extern WORD af[2];
+ extern int af_sel;

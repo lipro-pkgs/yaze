@@ -1,0 +1,21 @@
+0001-do-not-strip-debug-symbols-from-binaries.patch
+0002-fix-groff-warning-macro-PU-not-defined.patch
+# skip, because of non-DFSG file: 0003-simz80-remove-generated-source.patch
+0004-simz80-avoid-warnings-unused-variable-or-used-uninit.patch
+0005-clear-generated-sources.patch
+0006-clear-generated-binaries.patch
+0007-vcid-avoid-warnings-unused-variable.patch
+0008-avoid-warning-nested-extern-declaration-of-perl_para.patch
+0009-use-CLOCKS_PER_SEC-istead-of-obsolete-CLK_TCK.patch
+0010-avoid-conflicts-with-trunc-from-libm.patch
+0011-add-parentheses-omitted-in-certain-contexts.patch
+0012-avoid-implicit-declaration-of-file-functions.patch
+0013-set-_FORTIFY_SOURCE-0-to-disable-compile-time-checks.patch
+0014-set-MEMSIZE-64-explicitly.patch
+0015-use-system-wide-perl-interpreter.patch
+0016-set-LIBDIR-default-to-usr-local-share-yaze.patch
+0017-use-GNU-readline-library.patch
+0018-use-system-wide-Tcl-interpreter-CRLF-LF.patch
+0019-support-system-wide-startup-file-as-last-choice.patch
+0020-fix-lintian-warning-hyphen-used-as-minus-sign.patch
+0021-manpage-remove-hard-coded-directory-name.patch

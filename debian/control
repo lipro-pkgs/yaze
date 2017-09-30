@@ -1,0 +1,43 @@
+Source: yaze
+Section: otherosfs
+Priority: optional
+Maintainer: Stephan Linz <linz@li-pro.net>
+Build-Depends: debhelper (>= 9), dh-exec, quilt, dpkg-dev (>= 1.16.1~),
+ libreadline-dev (>= 5), libncurses5-dev (>= 5)
+Build-Depends-Indep: perl, expect, python-docutils
+Standards-Version: 3.9.8
+Homepage: ftp://ftp.ping.de/pub/misc/emulators/
+Vcs-Git: https://github.com/lipro-pkgs/yaze.git
+Vcs-Browser: https://github.com/lipro-pkgs/yaze
+
+Package: yaze
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: yaze-test, tcl, tcllib, expect
+Description: Yet Another Z80 Emulator
+ Yaze is a Z80 and CP/M emulator designed to run on Unix systems.
+ .
+ The package consists of:
+ .
+     - an instruction set simulator which accurately imitates a real Z80
+       microprocessor,
+ .
+     - a CP/M-2.2 bios written in C which runs on the Unix host but
+       interacts with the simulated Z80,
+ .
+     - a monitor which loads CP/M into the simulated processor's ram and
+       which makes Unix directories or files look like CP/M disks, and
+ .
+     - a separate program (cdm) which creates and manipulates CP/M disk
+       images for use with yaze.
+
+Package: yaze-test
+Architecture: all
+Pre-Depends: yaze (>= ${binary:Version})
+Depends: ${perl:Depends}, ${misc:Depends}
+Description: Yet Another Z80 Emulator - test suite
+ Yaze is a Z80 and CP/M emulator designed to run on Unix systems.
+ .
+ This package consists a suite of different test programs which nearly
+ exhaustively compares all instructions, for all machine states before
+ and after execution, against the results from a real chip.

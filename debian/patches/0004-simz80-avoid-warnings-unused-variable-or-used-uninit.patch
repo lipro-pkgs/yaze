@@ -1,0 +1,34 @@
+From 4c289d4fcae25865fe584ee7feb50e2e837a4393 Mon Sep 17 00:00:00 2001
+From: Stephan Linz <linz@li-pro.net>
+Date: Mon, 1 Sep 2014 18:27:51 +0200
+Subject: [PATCH] simz80: avoid warnings unused variable or used uninitialized
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ simz80.pl | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/simz80.pl b/simz80.pl
+index a31734a..abde648 100644
+--- a/simz80.pl
++++ b/simz80.pl
+@@ -1411,7 +1411,7 @@ static void
+ cb_prefix(FASTREG adr)
+ {
+     DECLARE_STATE();
+-    FASTWORK temp, acu, op, cbits;
++    FASTWORK temp = 0, acu = 0, op, cbits;
+ 
+ EOT
+ 	&cb_switch;
+@@ -1489,8 +1489,8 @@ EOT
+     FASTREG IY = iy;
+ EOT
+     }
+-    print "    FASTWORK temp, acu, sum, cbits;\n";
+-    print "    FASTWORK op, adr;\n" if ($cb_inline + $dfd_inline +
++    print "    FASTWORK temp = 0, acu = 0, sum, cbits;\n";
++    print "    FASTWORK op/*, adr*/;\n" if ($cb_inline + $dfd_inline +
+ 				  $ed_inline != 0);
+ 
+     if ($optab) {
