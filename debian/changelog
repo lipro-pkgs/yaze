@@ -1,11 +1,11 @@
-yaze (1.14+dfsg.1-2) UNRELEASED; urgency=low
+yaze (1.14+dfsg.1-2) unstable; urgency=low
 
   * debian/clean: Remove all artefacts not handle by upstream make.
   * debian/rules: Install upstream changelog (Fixes: lintian pedantic
     tag no-upstream-changelog).
   * debian/watch: Add upstream's pgp key to verify new releases.
 
- --
+ -- Stephan Linz <linz@li-pro.net>  Sat, 28 Oct 2017 09:21:26 +0200
 
 yaze (1.14+dfsg.1-1) unstable; urgency=low
 
