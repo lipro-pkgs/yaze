@@ -6,7 +6,12 @@ yaze (1.14+dfsg.2-1) UNRELEASED; urgency=low
   * debian/repack: Do not remove the intermediate artefact simz80.c
     from dfsg tar file.
   * debian/patches: Refactoring the quilt patch set to support
-    rebuild of the intermediate artefact simz80.c.
+    rebuild of the intermediate artefact simz80.c and the Debian
+    hardening option (_FORTIFY_SOURCE=2).
+  * debian/rules, debian/yaze.lintian-overrides: Remove all Debian
+    maintenance options related to hardening overrides.
+  * debian/TODO.Debian: Update and mark Debian maintenance overrides
+    related to hardening as done.
 
  --
 

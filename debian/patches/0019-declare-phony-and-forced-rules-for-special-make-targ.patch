@@ -24,10 +24,10 @@ Signed-off-by: Stephan Linz <linz@li-pro.net>
  1 file changed, 4 insertions(+)
 
 diff --git a/Makefile b/Makefile
-index 83d609c..d3b3e42 100644
+index 65f8669..b174d9e 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -64,6 +64,7 @@ all:		yaze cdm
+@@ -63,6 +63,7 @@ all:		yaze cdm
  yaze:		$(YAZE_OBJS)
  		$(CC) $(CFLAGS) $(YAZE_OBJS) $(LIBS) -o $@
  
@@ -35,7 +35,7 @@ index 83d609c..d3b3e42 100644
  simz80.c:	simz80.pl
  		rm -f simz80.c
  		perl -w simz80.pl >simz80.c
-@@ -104,3 +105,6 @@ clean:;		rm -f *.o *~ core yaze cdm
+@@ -103,3 +104,6 @@ clean:;		rm -f *.o *~ core yaze cdm
  yaze.o:		yaze.c simz80.h yaze.h
  bios.o:		bios.c simz80.h yaze.h
  simz80.o:	simz80.c simz80.h

@@ -15,7 +15,7 @@ Signed-off-by: Stephan Linz <linz@li-pro.net>
  2 files changed, 11 insertions(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index aa82818..83d609c 100644
+index 609acc2..65f8669 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -11,6 +11,7 @@ CC            =	gcc
@@ -26,7 +26,7 @@ index aa82818..83d609c 100644
  
  # full speed or debugging to taste
  #OPTIMIZE      = -O2
-@@ -44,7 +45,8 @@ INSTALL	      = install
+@@ -43,7 +44,8 @@ INSTALL	      = install
  ###### you should not need to change anything below this line ######
  CWARN	      = -ansi -pedantic -Wall -Wshadow \
  		-Wpointer-arith -Wnested-externs -Winline
