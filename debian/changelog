@@ -1,6 +1,8 @@
 yaze (1.14+dfsg.2-1) UNRELEASED; urgency=low
 
   * UNRELEASED
+  * debian/clean: Do not remove simz80.c -- there will be a new
+    quilt patch set to force rebuild of this intermediate artefact.
 
  --
 

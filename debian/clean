@@ -1,6 +1,5 @@
 cdm
 yaze
-simz80.c
 addons/cdm.exp
 addons/yaze.exp
 addons/yaze-default.rc
