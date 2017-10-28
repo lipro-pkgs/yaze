@@ -66,7 +66,6 @@ nonfree_fileglobs=(
         # Auto-generated files are non-source form.
         test/zexall.z80
         test/zexdoc.z80
-        simz80.c
 
         # Compiled files are non-source form.
 
