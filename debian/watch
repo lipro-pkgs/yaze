@@ -6,7 +6,13 @@
 version=3
 
 # Current manual tar-gz release at PING e.V. FTP server
-opts="dversionmangle=s/\+dfsg\.\d+$//" \
+opts=\
+dversionmangle=s/\+dfsg\.\d+$//,\
+pgpsigurlmangle=\
+s/ftp:/https:/;\
+s/ftp.ping.de/raw.githubusercontent.com/;\
+s/pub\/misc\/emulators/lipro-pkgs\/yaze\/signatures/;\
+s/$/.asc/ \
     ftp://ftp.ping.de/pub/misc/emulators/ yaze-(.*)\.tar\.gz \
     debian debian/repack
 
