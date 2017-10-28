@@ -1,0 +1,22 @@
+From: Stephan Linz <linz@li-pro.net>
+Date: Tue, 17 Oct 2017 20:16:14 +0200
+Subject: manpage: remove hard coded directory name
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ yaze.1 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/yaze.1 b/yaze.1
+index 84c65bb..551a99c 100644
+--- a/yaze.1
++++ b/yaze.1
+@@ -37,7 +37,7 @@ ram before the emulation is started.  The file is loaded at the
+ address given by the \fB\-l\fR option, if one is present, or else at
+ the basepage (see \fB\-p\fR).  If a bootfile is not specified with the
+ \fB\-b\fR option, yaze looks for the file yaze.boot in the current
+-directory first, then in /usr/local/lib.
++directory first, then in the global library directory.
+ .TP
+ .B \-l
+ the hexadecimal address at which to load and start the bootstrap file,

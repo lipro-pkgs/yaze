@@ -1,7 +1,6 @@
-From cff2a1575ff92b845844a5a8d72d40e48d65c3ae Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:28:48 +0200
-Subject: [PATCH] set MEMSIZE=64 explicitly
+Subject: set MEMSIZE=64 explicitly
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---
@@ -9,7 +8,7 @@ Signed-off-by: Stephan Linz <linz@li-pro.net>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index 5936f8b..c472fb0 100644
+index 7f79000..ff045c7 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -25,7 +25,7 @@ OPTIMIZE       = -g -O2

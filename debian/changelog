@@ -5,6 +5,8 @@ yaze (1.14+dfsg.2-1) UNRELEASED; urgency=low
     quilt patch set to force rebuild of this intermediate artefact.
   * debian/repack: Do not remove the intermediate artefact simz80.c
     from dfsg tar file.
+  * debian/patches: Refactoring the quilt patch set to support
+    rebuild of the intermediate artefact simz80.c.
 
  --
 

@@ -1,7 +1,6 @@
-From 8476eb0cd780a53087eae73aa2d905b14855f8eb Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:27:10 +0200
-Subject: [PATCH] set _FORTIFY_SOURCE=0 to disable compile-time checks
+Subject: set _FORTIFY_SOURCE=0 to disable compile-time checks
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---
@@ -9,7 +8,7 @@ Signed-off-by: Stephan Linz <linz@li-pro.net>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index e466727..5936f8b 100644
+index ab88079..7f79000 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -24,7 +24,9 @@ OPTIMIZE       = -g -O2

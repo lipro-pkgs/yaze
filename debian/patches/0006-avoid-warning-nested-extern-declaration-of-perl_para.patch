@@ -1,7 +1,6 @@
-From 10db4f44ae58952070e5f913875b66fec2abfc88 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 18:41:15 +0200
-Subject: [PATCH] avoid warning nested extern declaration of 'perl_params'
+Subject: avoid warning nested extern declaration of 'perl_params'
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---

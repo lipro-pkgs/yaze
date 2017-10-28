@@ -1,7 +1,6 @@
-From 163163c95155744d5311813a598f7b645bb7c5b4 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:05:27 +0200
-Subject: [PATCH] use CLOCKS_PER_SEC istead of obsolete CLK_TCK
+Subject: use CLOCKS_PER_SEC istead of obsolete CLK_TCK
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---

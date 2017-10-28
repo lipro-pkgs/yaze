@@ -1,7 +1,6 @@
-From 5252cd9ccacd3e5a9f9effc28128f31da86f75c9 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:37:13 +0200
-Subject: [PATCH] use system wide perl interpreter
+Subject: use system wide perl interpreter
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---

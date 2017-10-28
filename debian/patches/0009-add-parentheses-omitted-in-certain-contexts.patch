@@ -1,7 +1,6 @@
-From eed9a7e0abc8f467349b5c251a8955c389f34961 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:21:02 +0200
-Subject: [PATCH] add parentheses omitted in certain contexts
+Subject: add parentheses omitted in certain contexts
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---
