@@ -1,7 +1,6 @@
-From a876fdced82f0b6d8e6e347cea949ed5374d1827 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:46:07 +0200
-Subject: [PATCH] set LIBDIR default to /usr/local/share/yaze
+Subject: set LIBDIR default to /usr/local/share/yaze
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---
@@ -11,7 +10,7 @@ Signed-off-by: Stephan Linz <linz@li-pro.net>
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index c472fb0..a4fbdaf 100644
+index 3064a80..446802c 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -10,7 +10,7 @@ CC            =	gcc

@@ -1,3 +1,19 @@
+yaze (1.14+dfsg.2-1) unstable; urgency=low
+
+  * debian/clean: Do not remove simz80.c -- there will be a new
+    quilt patch set to force rebuild of this intermediate artefact.
+  * debian/repack: Do not remove the intermediate artefact simz80.c
+    from dfsg tar file.
+  * debian/patches: Refactoring the quilt patch set to support
+    rebuild of the intermediate artefact simz80.c and the Debian
+    hardening option (_FORTIFY_SOURCE=2).
+  * debian/rules, debian/yaze.lintian-overrides: Remove all Debian
+    maintenance options related to hardening overrides.
+  * debian/TODO.Debian: Update and mark Debian maintenance overrides
+    related to hardening as done.
+
+ -- Stephan Linz <linz@li-pro.net>  Sun, 29 Oct 2017 11:25:10 +0100
+
 yaze (1.14+dfsg.1-2) unstable; urgency=low
 
   * debian/clean: Remove all artefacts not handle by upstream make.

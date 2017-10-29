@@ -1,7 +1,6 @@
-From 66961f0a5d6ddd653946c76538892859cbb3a7a3 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:08:54 +0200
-Subject: [PATCH] avoid conflicts with trunc() from libm
+Subject: avoid conflicts with trunc() from libm
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---

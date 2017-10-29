@@ -1,7 +1,6 @@
-From 839537ecbebddf64784a939a90b8e74e58568cea Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Sun, 1 Oct 2017 13:56:02 +0200
-Subject: [PATCH] support system wide startup file as last choice
+Subject: support system wide startup file as last choice
 
 The new search order will be:
 
@@ -16,7 +15,7 @@ Signed-off-by: Stephan Linz <linz@li-pro.net>
  2 files changed, 11 insertions(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index 61de6e3..ece0863 100644
+index 609acc2..65f8669 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -11,6 +11,7 @@ CC            =	gcc
@@ -27,7 +26,7 @@ index 61de6e3..ece0863 100644
  
  # full speed or debugging to taste
  #OPTIMIZE      = -O2
-@@ -44,7 +45,8 @@ INSTALL	      = install
+@@ -43,7 +44,8 @@ INSTALL	      = install
  ###### you should not need to change anything below this line ######
  CWARN	      = -ansi -pedantic -Wall -Wshadow \
  		-Wpointer-arith -Wnested-externs -Winline

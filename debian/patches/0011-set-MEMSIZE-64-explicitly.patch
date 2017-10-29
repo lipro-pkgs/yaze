@@ -1,0 +1,22 @@
+From: Stephan Linz <linz@li-pro.net>
+Date: Mon, 1 Sep 2014 19:28:48 +0200
+Subject: set MEMSIZE=64 explicitly
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index ab88079..3064a80 100644
+--- a/Makefile
++++ b/Makefile
+@@ -24,7 +24,7 @@ OPTIMIZE       = -g -O2
+ # -DMEMSIZE <val> sets size of memory in KBytes (default 64)
+ # solaris2 needs -D__EXTENSIONS__
+ # linux needs -D_GNU_SOURCE
+-OPTIONS	      = -DBIOS -D_GNU_SOURCE
++OPTIONS	      = -DBIOS -DMEMSIZE=64 -D_GNU_SOURCE
+ 
+ # Link with CP/M BIOS support,
+ YAZE_OBJS     = yaze.o simz80.o bios.o monitor.o

@@ -1,7 +1,6 @@
-From 6b51f7a6d234795c555050b2038e2848ab7c7f4f Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Thu, 29 Oct 2015 23:07:03 +0100
-Subject: [PATCH] fix groff warning: macro `PU' not defined
+Subject: fix groff warning: macro `PU' not defined
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---

@@ -1,0 +1,44 @@
+From: Stephan Linz <linz@li-pro.net>
+Date: Sun, 29 Oct 2017 09:45:31 +0100
+Subject: respect and use system wide CFLAGS and LDFLAGS
+
+Expand instead of overwrite the CFLAGS to catch system wide
+pre-definitions for example hardening. Also respect and use
+system wide LDFLAGS for binary linking.
+
+Signed-off-by: Stephan Linz <linz@li-pro.net>
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b174d9e..b1617cf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -44,7 +44,7 @@ INSTALL	      = install
+ ###### you should not need to change anything below this line ######
+ CWARN	      = -ansi -pedantic -Wall -Wshadow \
+ 		-Wpointer-arith -Wnested-externs -Winline
+-CFLAGS        =	$(CWARN) $(OPTIMIZE) $(OPTIONS) -DLIBDIR=\"$(LIBDIR)/\" \
++CFLAGS       += $(CWARN) $(OPTIMIZE) $(OPTIONS) -DLIBDIR=\"$(LIBDIR)/\" \
+                 -DSYSCONFDIR=\"$(SYSCONFDIR)\"
+ 
+ SRCS	      = yaze.c simz80.c io.c bios.c monitor.c cdm.c
+@@ -61,7 +61,7 @@ DISTRIB       =	Makefile simz80.h yaze.h bios.h simz80.pl .yazerc yaze.boot \
+ all:		yaze cdm
+ 
+ yaze:		$(YAZE_OBJS)
+-		$(CC) $(CFLAGS) $(YAZE_OBJS) $(LIBS) -o $@
++		$(CC) $(CFLAGS) $(LDFLAGS) $(YAZE_OBJS) $(LIBS) -o $@
+ 
+ simz80.c:	.FORCE
+ simz80.c:	simz80.pl
+@@ -70,7 +70,7 @@ simz80.c:	simz80.pl
+ 		chmod a-w simz80.c
+ 
+ cdm:		cdm.o
+-		$(CC) $(CFLAGS) cdm.o $(LIBS) -o $@
++		$(CC) $(CFLAGS) $(LDFLAGS) cdm.o $(LIBS) -o $@
+ 
+ install:	all
+ 		$(INSTALL) -c -m 755 yaze $(BINDIR)

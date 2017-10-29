@@ -1,7 +1,6 @@
-From 5c1ac18a0785e9cf22d62cf42842453ef3dddaf3 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 21:23:05 +0200
-Subject: [PATCH] use system wide Tcl interpreter (CRLF->LF)
+Subject: use system wide Tcl interpreter (CRLF->LF)
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---
