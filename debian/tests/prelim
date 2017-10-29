@@ -1,0 +1,9 @@
+#!/bin/sh
+
+testYazeSelectivePrelim() {
+  result=`/usr/share/yaze/yaze-test.sh -s prelim`
+  assertEquals 'yaze(b:prelim): OK' "${result}"
+}
+
+# Load shUnit2.
+. /usr/bin/shunit2

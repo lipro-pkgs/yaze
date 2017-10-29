@@ -7,8 +7,6 @@ To Do list for Debian packaging
 To Do
 =====
 
-* Add support for `functional testing of Debian packages`_ with `autopkgtest`.
-
 * Replace the target `override_dh_clean` in `debian/rules` with the new
   functionality in `debhelper (>= 9.20151116)`_ to support removal of
   directory (plus contents) as soon as this new version of debhelper is
@@ -20,12 +18,13 @@ To Do
   it and create the CP/M test programs from the corresponding Z80 assembler
   source files.
 
-.. _`functional testing of Debian packages`: https://ci.debian.net/doc/file.TUTORIAL.html
 .. _`debhelper (>= 9.20151116)`: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=511048#69
 
 
 Done
 ====
+
+* Add support for `functional testing of Debian packages`_ with `autopkgtest`.
 
 * Provide a patch to improve the upstream code related to compile time
   warnings `warning: ignoring return value`. Since `glibc 2.3.4`_ the
@@ -50,6 +49,7 @@ Done
   introduced to avoid the lintian warnings as an result of the Debian
   maintenance option `hardening=-fortify` in `debian/rules`.
 
+.. _`functional testing of Debian packages`: https://ci.debian.net/doc/file.TUTORIAL.html
 .. _`glibc 2.3.4`: http://man7.org/linux/man-pages/man7/feature_test_macros.7.html
 .. _`Debian Hardening Options`: https://wiki.debian.org/Hardening
 
