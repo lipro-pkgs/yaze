@@ -1,6 +1,5 @@
-yaze (1.14+dfsg.2-1) UNRELEASED; urgency=low
+yaze (1.14+dfsg.2-1) unstable; urgency=low
 
-  * UNRELEASED
   * debian/clean: Do not remove simz80.c -- there will be a new
     quilt patch set to force rebuild of this intermediate artefact.
   * debian/repack: Do not remove the intermediate artefact simz80.c
@@ -13,7 +12,7 @@ yaze (1.14+dfsg.2-1) UNRELEASED; urgency=low
   * debian/TODO.Debian: Update and mark Debian maintenance overrides
     related to hardening as done.
 
- --
+ -- Stephan Linz <linz@li-pro.net>  Sun, 29 Oct 2017 11:25:10 +0100
 
 yaze (1.14+dfsg.1-2) unstable; urgency=low
 
