@@ -2,10 +2,12 @@ To Do list for Debian packaging
 ###############################
 
 :Author: Stephan Linz <linz@li-pro.net>
-:Last-Updated: 2017-10-28
+:Last-Updated: 2017-10-29
 
 To Do
 =====
+
+* Add support for `functional testing of Debian packages`_ with `autopkgtest`.
 
 * Replace the target `override_dh_clean` in `debian/rules` with the new
   functionality in `debhelper (>= 9.20151116)`_ to support removal of
@@ -18,6 +20,7 @@ To Do
   it and create the CP/M test programs from the corresponding Z80 assembler
   source files.
 
+.. _`functional testing of Debian packages`: https://ci.debian.net/doc/file.TUTORIAL.html
 .. _`debhelper (>= 9.20151116)`: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=511048#69
 
 
