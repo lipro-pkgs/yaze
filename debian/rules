@@ -69,6 +69,7 @@ host2cpm_manpage_path = $(addprefix ${DOCDIR}/,${host2cpm_manpage})
 GENERATED_DIRS += ${DOCDIR}
 
 SED = sed
+TOUCH = touch
 INSTALL = install
 
 # Send HTTP traffic to the “discard” service during packaging actions.
@@ -97,6 +98,7 @@ override_dh_auto_configure: ${TESTDIR}/zexlax.pl
 
 
 override_dh_auto_build:
+	$(Q)$(TOUCH) simz80.pl
 	$(Q)dh_auto_build -pyaze -- \
 	  BINDIR=${BINDIR} LIBDIR=${LIBDIR} MANDIR=${MANDIR} \
 	  SYSCONFDIR=${SYSCONFDIR}
