@@ -1,6 +1,5 @@
-yaze (1.14+dfsg.2-2) UNRELEASED; urgency=low
+yaze (1.14+dfsg.2-2) unstable; urgency=low
 
-  * UNRELEASED
   * debian/tests: Add support for functional testing with debci.
   * debian/TODO.Debian: Update and mark support for functional
     testing of Debian packages as done.  Add references to Z80
@@ -9,7 +8,7 @@ yaze (1.14+dfsg.2-2) UNRELEASED; urgency=low
     second rebuild of the intermediate artefact simz80.c on stage
     dh_install.
 
- --
+ -- Stephan Linz <linz@li-pro.net>  Sun, 05 Nov 2017 11:44:31 +0100
 
 yaze (1.14+dfsg.2-1) unstable; urgency=low
 
