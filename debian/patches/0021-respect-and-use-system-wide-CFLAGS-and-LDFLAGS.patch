@@ -12,7 +12,7 @@ Signed-off-by: Stephan Linz <linz@li-pro.net>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index b174d9e..b1617cf 100644
+index ea0a1ad..ba14b62 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -44,7 +44,7 @@ INSTALL	      = install
@@ -31,9 +31,9 @@ index b174d9e..b1617cf 100644
 -		$(CC) $(CFLAGS) $(YAZE_OBJS) $(LIBS) -o $@
 +		$(CC) $(CFLAGS) $(LDFLAGS) $(YAZE_OBJS) $(LIBS) -o $@
  
- simz80.c:	.FORCE
  simz80.c:	simz80.pl
-@@ -70,7 +70,7 @@ simz80.c:	simz80.pl
+ 		rm -f simz80.c
+@@ -69,7 +69,7 @@ simz80.c:	simz80.pl
  		chmod a-w simz80.c
  
  cdm:		cdm.o

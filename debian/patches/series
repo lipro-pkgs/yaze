@@ -16,6 +16,6 @@
 0016-support-system-wide-startup-file-as-last-choice.patch
 0017-fix-lintian-warning-hyphen-used-as-minus-sign.patch
 0018-manpage-remove-hard-coded-directory-name.patch
-0019-declare-phony-and-forced-rules-for-special-make-targ.patch
+0019-declare-phony-rules-for-special-make-targets.patch
 0020-avoid-warnings-of-ignored-return-value.patch
 0021-respect-and-use-system-wide-CFLAGS-and-LDFLAGS.patch

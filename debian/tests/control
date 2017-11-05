@@ -1,0 +1,2 @@
+Tests: prelim zexdoc zexall
+Depends: @, shunit2, expect

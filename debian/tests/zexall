@@ -1,0 +1,9 @@
+#!/bin/sh
+
+testYazeSelectiveZexAll() {
+  result=`/usr/share/yaze/yaze-test.sh -s zexall`
+  assertEquals 'yaze(b:zexall): OK' "${result}"
+}
+
+# Load shUnit2.
+. /usr/bin/shunit2

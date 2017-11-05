@@ -1,0 +1,9 @@
+#!/bin/sh
+
+testYazeSelectiveZexDoc() {
+  result=`/usr/share/yaze/yaze-test.sh -s zexdoc`
+  assertEquals 'yaze(b:zexdoc): OK' "${result}"
+}
+
+# Load shUnit2.
+. /usr/bin/shunit2

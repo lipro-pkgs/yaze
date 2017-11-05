@@ -7,8 +7,6 @@ To Do list for Debian packaging
 To Do
 =====
 
-* Add support for `functional testing of Debian packages`_ with `autopkgtest`.
-
 * Replace the target `override_dh_clean` in `debian/rules` with the new
   functionality in `debhelper (>= 9.20151116)`_ to support removal of
   directory (plus contents) as soon as this new version of debhelper is
@@ -16,16 +14,24 @@ To Do
 
 * Instead of deploy and use the pre-assembled CP/M test programs
   `test/prelim.com`, `test/zexdoc.com`, and `test/zexall.com` select or
-  provide an Debian package with an proper Z80 native assembler, debends on
+  provide an Debian package with an proper Z80 native assembler, depends on
   it and create the CP/M test programs from the corresponding Z80 assembler
-  source files.
+  source files. Possible Z80 native assembler were:
 
-.. _`functional testing of Debian packages`: https://ci.debian.net/doc/file.TUTORIAL.html
+  * `ZMAC`_ Z-80 Macro Cross Assembler by George Phillips and many other
+  * `MZMAC`_ ZMAC fork by Piergiorgio Betti from My Z80 Tools (MZT)
+  * `ZASM`_ Z80 assembler by Günter Woigk (Kio)
+
 .. _`debhelper (>= 9.20151116)`: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=511048#69
+.. _`ZMAC`: http://48k.ca/zmac.html
+.. _`MZMAC`: http://www.z80cpu.eu/projects/78-data-articles/projects/76-mdz80
+.. _`ZASM`: https://k1.spdns.de/Develop/Projects/zasm-4.0/Distributions/
 
 
 Done
 ====
+
+* Add support for `functional testing of Debian packages`_ with `autopkgtest`.
 
 * Provide a patch to improve the upstream code related to compile time
   warnings `warning: ignoring return value`. Since `glibc 2.3.4`_ the
@@ -50,6 +56,7 @@ Done
   introduced to avoid the lintian warnings as an result of the Debian
   maintenance option `hardening=-fortify` in `debian/rules`.
 
+.. _`functional testing of Debian packages`: https://ci.debian.net/doc/file.TUTORIAL.html
 .. _`glibc 2.3.4`: http://man7.org/linux/man-pages/man7/feature_test_macros.7.html
 .. _`Debian Hardening Options`: https://wiki.debian.org/Hardening
 

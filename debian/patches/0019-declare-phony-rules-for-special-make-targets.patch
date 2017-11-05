@@ -1,6 +1,6 @@
 From: Stephan Linz <linz@li-pro.net>
 Date: Sat, 28 Oct 2017 07:57:52 +0200
-Subject: declare phony and forced rules for special make targets
+Subject: declare phony rules for special make targets
 
 In terms of Make, a phony target is simply a target that is always
 out-of-date, so whenever you ask 'make <phony_target>', it will run,
@@ -20,22 +20,14 @@ https://www.gnu.org/software/make/manual/html_node/Force-Targets.html
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---
- Makefile | 4 ++++
- 1 file changed, 4 insertions(+)
+ Makefile | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/Makefile b/Makefile
-index 65f8669..b174d9e 100644
+index 65f8669..ea0a1ad 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -63,6 +63,7 @@ all:		yaze cdm
- yaze:		$(YAZE_OBJS)
- 		$(CC) $(CFLAGS) $(YAZE_OBJS) $(LIBS) -o $@
- 
-+simz80.c:	.FORCE
- simz80.c:	simz80.pl
- 		rm -f simz80.c
- 		perl -w simz80.pl >simz80.c
-@@ -103,3 +104,6 @@ clean:;		rm -f *.o *~ core yaze cdm
+@@ -103,3 +103,6 @@ clean:;		rm -f *.o *~ core yaze cdm
  yaze.o:		yaze.c simz80.h yaze.h
  bios.o:		bios.c simz80.h yaze.h
  simz80.o:	simz80.c simz80.h
