@@ -3,7 +3,8 @@ yaze (1.14+dfsg.2-2) UNRELEASED; urgency=low
   * UNRELEASED
   * debian/tests: Add support for functional testing with debci.
   * debian/TODO.Debian: Update and mark support for functional
-    testing of Debian packages as done.
+    testing of Debian packages as done.  Add references to Z80
+    native assembler.
   * debian/patches: Refactoring the quilt patch set to fix the
     second rebuild of the intermediate artefact simz80.c on stage
     dh_install.

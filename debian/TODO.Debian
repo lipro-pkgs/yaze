@@ -14,11 +14,18 @@ To Do
 
 * Instead of deploy and use the pre-assembled CP/M test programs
   `test/prelim.com`, `test/zexdoc.com`, and `test/zexall.com` select or
-  provide an Debian package with an proper Z80 native assembler, debends on
+  provide an Debian package with an proper Z80 native assembler, depends on
   it and create the CP/M test programs from the corresponding Z80 assembler
-  source files.
+  source files. Possible Z80 native assembler were:
+
+  * `ZMAC`_ Z-80 Macro Cross Assembler by George Phillips and many other
+  * `MZMAC`_ ZMAC fork by Piergiorgio Betti from My Z80 Tools (MZT)
+  * `ZASM`_ Z80 assembler by Günter Woigk (Kio)
 
 .. _`debhelper (>= 9.20151116)`: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=511048#69
+.. _`ZMAC`: http://48k.ca/zmac.html
+.. _`MZMAC`: http://www.z80cpu.eu/projects/78-data-articles/projects/76-mdz80
+.. _`ZASM`: https://k1.spdns.de/Develop/Projects/zasm-4.0/Distributions/
 
 
 Done
