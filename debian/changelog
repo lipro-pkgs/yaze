@@ -1,12 +1,11 @@
-yaze (1.14+dfsg.2-3) UNRELEASED; urgency=low
+yaze (1.14+dfsg.2-3) unstable; urgency=low
 
-  * UNRELEASED
   * debian/control: Extend package description.
   * debian/patches: Rebase all patches from branch 'cpm4l' as
     provided by: https://github.com/lipro-cpm4l/yaze
   * debian/copyright: Extend for ZCPR-D&J and SUPRBDOS.
 
- --
+ -- Stephan Linz <linz@li-pro.net>  Sun, 05 Nov 2017 19:21:51 +0100
 
 yaze (1.14+dfsg.2-2) unstable; urgency=low
 
