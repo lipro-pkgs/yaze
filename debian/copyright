@@ -71,6 +71,40 @@ License-Grant:
     under the terms of the Apache License, version 2.0 as published by the
     Apache Software Foundation. No warranty expressed or implied.
 
+Files: yaze.boot
+Copyright:
+    © 1986–1994 Don Kirkpatrick <Donald.C.Kirkpatrick@tek.com>
+    © 1981–1994 CCP-GROUP of NZ-COM (Z-Systems), ZCPR
+    © 1985–1986 Herman ten Brugge, Benjamin Ho
+License: public-domain-zsystem-pdl
+Comment:
+    Authorship of CP/M disk image content for the
+    .
+    ZCPR-D&J of 5 March 1994 as CCP:
+        Jay Sage, Don Kirkpatrick -- Z80 Command Processor Replacement
+        (ZCPR) original written by Jay Sage for the NZ-COM (Z-Systems)
+        with extensive modifications by Don Kirkpatrick (ZCPR-D&J).
+    .
+    SUPRBDOS as BDOS:
+        Herman ten Brugge, Benjamin Ho -- Z80 Basic Disk Operating System
+        Replacement for the CP/M 2.2 BDOS that enhances the performance
+        of a standard CP/M or ZCPR systems -- public domain for
+        non-commerical use only.
+
+License: public-domain-zsystem-pdl
+    Copying and distribution of parts of these files, with or without
+    modification, is permitted in any medium without royalty provided
+    the copyright notice and this notice are preserved.
+    .
+    LICENSE AGREEMENT FOR THE NZ-COM (Z-Systems) MATERIAL
+    .
+    Copied from: http://www.gaby.de/edownf.htm
+    .
+    Following a common wish of CP/M users, Jay Sage lately declared that
+    Z-Systems - NZ-COM (for CP/M 2.2) and Z3PLUS (for CP/M-Plus) - can now
+    be downloaded for free. Anyway, he would like to be informed about who
+    (and how often) downloads the files.
+
 License: GPL-2+
     On Debian systems, the complete text of version 2 of the GNU General
     Public License can be found in ‘/usr/share/common-licenses/GPL-2’.
