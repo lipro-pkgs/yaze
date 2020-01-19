@@ -1,6 +1,7 @@
 yaze (1.14+dfsg.2-3) UNRELEASED; urgency=low
 
   * UNRELEASED
+  * debian/control: Extend package description.
 
  --
 
