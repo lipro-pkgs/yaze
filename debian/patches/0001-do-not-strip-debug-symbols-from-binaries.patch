@@ -1,3 +1,4 @@
+From 388dc3de94bcf112aa75ec24e3ccd8fb9ba415c6 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Thu, 29 Oct 2015 22:59:29 +0100
 Subject: do not strip debug symbols from binaries

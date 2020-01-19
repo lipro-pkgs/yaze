@@ -1,3 +1,4 @@
+From 54ec95a7a6cc53435d5c4f11c6b7891b878acb89 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:05:27 +0200
 Subject: use CLOCKS_PER_SEC istead of obsolete CLK_TCK

@@ -1,3 +1,4 @@
+From 8a99200626ea320784366656715d44f5be500d7b Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Sat, 28 Oct 2017 19:20:36 +0200
 Subject: avoid warnings of ignored return value

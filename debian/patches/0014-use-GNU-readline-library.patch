@@ -1,3 +1,4 @@
+From 50111a05ec979c95a4caaa2d814e24f3fd35caae Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:58:04 +0200
 Subject: use GNU readline library

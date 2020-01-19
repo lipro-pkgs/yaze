@@ -1,3 +1,4 @@
+From 6d4e959fd424e71a77f19faf06eb6554b324161d Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 18:27:51 +0200
 Subject: simz80: avoid warnings unused variable or used uninitialized

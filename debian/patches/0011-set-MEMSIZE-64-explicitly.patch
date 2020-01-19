@@ -1,3 +1,4 @@
+From 050ca9293ab961ba43716d5b4a0da4636474187b Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:28:48 +0200
 Subject: set MEMSIZE=64 explicitly

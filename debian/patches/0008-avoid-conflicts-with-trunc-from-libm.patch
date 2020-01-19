@@ -1,3 +1,4 @@
+From 30f9bb1f2a0d83711a226f4dd17465514bb741b5 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:08:54 +0200
 Subject: avoid conflicts with trunc() from libm
