@@ -2,6 +2,8 @@ yaze (1.14+dfsg.2-3) UNRELEASED; urgency=low
 
   * UNRELEASED
   * debian/control: Extend package description.
+  * debian/patches: Rebase all patches from branch 'cpm4l' as
+    provided by: https://github.com/lipro-cpm4l/yaze
 
  --
 

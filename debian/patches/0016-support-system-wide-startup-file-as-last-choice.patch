@@ -1,3 +1,4 @@
+From f7b699c7b0384343aa612d79b69cb5bc303b87f9 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Sun, 1 Oct 2017 13:56:02 +0200
 Subject: support system wide startup file as last choice

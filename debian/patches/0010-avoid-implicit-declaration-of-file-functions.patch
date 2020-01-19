@@ -1,3 +1,4 @@
+From 26540ceeb674d27c2a6c4f1b4754e9040fb09311 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:24:42 +0200
 Subject: avoid implicit declaration of file functions

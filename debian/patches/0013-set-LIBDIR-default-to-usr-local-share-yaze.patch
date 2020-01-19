@@ -1,3 +1,4 @@
+From 17fbbd8cfef9bff07430ba81a1a41031d3fb6f11 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 19:46:07 +0200
 Subject: set LIBDIR default to /usr/local/share/yaze

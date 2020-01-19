@@ -1,3 +1,4 @@
+From 153a606a7e9e1b0ea16eb88871579734f18abc0e Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Tue, 17 Oct 2017 18:29:46 +0200
 Subject: fix lintian warning: hyphen used as minus sign

@@ -1,3 +1,4 @@
+From 9a2ce6354ef1bf7ff9b70b077fbf3f1f951501f3 Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 18:37:11 +0200
 Subject: vcid: avoid warnings unused variable

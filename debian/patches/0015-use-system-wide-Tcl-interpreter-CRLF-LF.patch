@@ -1,10 +1,11 @@
+From 2f539125943bd07debbbff614fee039edc1c7b1b Mon Sep 17 00:00:00 2001
 From: Stephan Linz <linz@li-pro.net>
 Date: Mon, 1 Sep 2014 21:23:05 +0200
 Subject: use system wide Tcl interpreter (CRLF->LF)
 
 Signed-off-by: Stephan Linz <linz@li-pro.net>
 ---
- host2cpm.tcl | 238 +++++++++++++++++++++++++++++------------------------------
+ host2cpm.tcl | 238 +++++++++++++++++++++++++--------------------------
  1 file changed, 119 insertions(+), 119 deletions(-)
 
 diff --git a/host2cpm.tcl b/host2cpm.tcl
